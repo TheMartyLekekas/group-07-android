@@ -1,4 +1,4 @@
-package se.chalmers.cse.dit341.group00;
+package se.chalmers.cse.dit341.group07;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("se.chalmers.cse.dit341.group00", appContext.getPackageName());
+        assertEquals("se.chalmers.cse.dit341.group07", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package se.chalmers.cse.dit341.group00;
+package se.chalmers.cse.dit341.group07;
 
 import org.junit.Test;
 

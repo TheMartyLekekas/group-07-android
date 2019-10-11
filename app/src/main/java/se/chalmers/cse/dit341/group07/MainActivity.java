@@ -1,4 +1,4 @@
-package se.chalmers.cse.dit341.group00;
+package se.chalmers.cse.dit341.group07;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import se.chalmers.cse.dit341.group00.model.Camel;
+import se.chalmers.cse.dit341.group07.model.Camel;
 
 
 public class MainActivity extends AppCompatActivity {
