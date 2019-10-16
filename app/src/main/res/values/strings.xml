@@ -9,6 +9,7 @@
     <string name="product_description">Description</string>
     <string name="product_price">Price</string>
     <string name="publish_product">Publish</string>
+    <string name="product_image">Image of the product</string>
 
     <string name="category_type">Category</string>
     <string name="category_type1">Clothing &amp; Accessories</string>

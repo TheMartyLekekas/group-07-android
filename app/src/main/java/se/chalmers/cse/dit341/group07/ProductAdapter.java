@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import se.chalmers.cse.dit341.group07.model.Product;
@@ -17,7 +18,7 @@ import se.chalmers.cse.dit341.group07.model.Product;
  * {@link ProductAdapter} is an {@link ArrayAdapter} that can provide the layout for each list
  * based on a data source, which is a list of {@link Product} objects.
  * */
-public class ProductAdapter extends ArrayAdapter<Product> {
+public class ProductAdapter extends ArrayAdapter<Product> implements Serializable {
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -59,14 +60,15 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         TextView nameTextView = listItemView.findViewById(R.id.product_name);
         nameTextView.setText(currentProduct.getProductName());
 
-        TextView numberTextView = listItemView.findViewById(R.id.product_number);
+        TextView numberTextView = listItemView.findViewById(R.id.product_price);
         numberTextView.setText(String.valueOf(currentProduct.getPrice()));
 
-        ImageView iconView = listItemView.findViewById(R.id.list_item_icon);
-        iconView.setImageResource(currentProduct.getImageResourceId());
+        TextView imageTextView = listItemView.findViewById(R.id.product_image_id);
+        imageTextView.setText(String.valueOf(currentProduct.getImageResourceId()));
 
-        // Return the whole list item layout (containing 2 TextViews and an ImageView)
-        // so that it can be shown in the ListView
+//        ImageView iconView = listItemView.findViewById(R.id.list_item_icon);
+//        iconView.setImageResource(currentProduct.getImageResourceId());
+
         return listItemView;
     }
 }

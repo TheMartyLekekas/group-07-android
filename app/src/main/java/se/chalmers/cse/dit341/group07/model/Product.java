@@ -33,15 +33,15 @@ public class Product implements Serializable {
 
 
     public String getProductName() {
-        return productName;
+        return this.productName;
     }
 
     public int getPrice() {
-        return price;
+        return this.price;
     }
 
     public int getImageResourceId() {
-        return imageResourceId;
+        return this.imageResourceId;
     }
 }
 

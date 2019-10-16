@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import android.view.View;
 import android.widget.TextView;
@@ -29,7 +31,7 @@ import se.chalmers.cse.dit341.group07.model.Review;
 import se.chalmers.cse.dit341.group07.model.PaymentData;
 
 
-public class StartScreen extends AppCompatActivity {
+public class StartScreen extends AppCompatActivity implements Serializable {
 
     // Field for parameter name
     public static final String HTTP_PARAM = "httpResponse";
@@ -41,10 +43,10 @@ public class StartScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        products.add(new Product("Young pup", 200, R.drawable.puppy));
-        products.add(new Product("Good wheel", 33, R.drawable.flat_tire));
-        products.add(new Product("Human Resources", 10000, R.drawable.kid));
-        products.add(new Product("My Soul", 8, R.drawable.soul));
+        products.add(new Product("Young pup", 200, 30));
+        products.add(new Product("Good wheel", 33, 30));
+        products.add(new Product("Human Resources", 10000, 20));
+        products.add(new Product("My Soul", 8, 20));
 
         // Create an ProductAdapter, whose data source is a list of Products
         ProductAdapter newAdapter = new ProductAdapter(this, products);
@@ -67,15 +69,15 @@ public class StartScreen extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent newProduct) {
 
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
-//                String result = data.getStringExtra("result");
-                products.add(new Product("Young pup", 200, R.drawable.puppy));
+                Product neProduct = (Product) newProduct.getSerializableExtra("passedProduct");
+                products.add(neProduct);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
+                //code if there's no result
             }
         }
     }
