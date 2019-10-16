@@ -27,6 +27,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.chalmers.cse.dit341.group07.StartScreen" />
         </activity>
+        <activity android:name="se.chalmers.cse.dit341.group07.CreateProduct"
+            android:parentActivityName="se.chalmers.cse.dit341.group07.StartScreen">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="se.chalmers.cse.dit341.group07.StartScreen" />
+        </activity>
     </application>
 
 </manifest>

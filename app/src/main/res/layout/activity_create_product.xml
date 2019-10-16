@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<android.support.constraint.ConstraintLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<!--</android.support.constraint.ConstraintLayout>-->
+
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/ScrollView01"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:scrollbars="vertical">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/create_product_headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_product_form_headline"
+        android:textSize="10pt">
+    </TextView>
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_height="wrap_content"
+        android:hint="@string/product_name"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <EditText
+        android:id="@+id/input_description"
+        android:layout_height="wrap_content"
+        android:hint="@string/product_description"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <EditText
+        android:id="@+id/input_price"
+        android:layout_height="wrap_content"
+        android:hint="@string/product_price"
+        android:inputType="numberSigned"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <Spinner
+        android:id="@+id/spinner_category_type"
+        android:layout_height="wrap_content"
+        android:prompt="@string/category_type"
+        android:layout_width="fill_parent"
+        android:entries="@array/category_type_list">
+    </Spinner>
+
+    <Button
+        android:id="@+id/publish_product_btn"
+        android:layout_height="wrap_content"
+        android:text="@string/publish_product"
+        android:onClick="onClickPublishProduct"
+        android:layout_width="fill_parent">
+    </Button>
+
+</LinearLayout>
+</ScrollView>

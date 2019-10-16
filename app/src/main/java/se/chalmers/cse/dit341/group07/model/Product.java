@@ -1,6 +1,8 @@
 package se.chalmers.cse.dit341.group07.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String productName;
     private String description;
     private int price;
