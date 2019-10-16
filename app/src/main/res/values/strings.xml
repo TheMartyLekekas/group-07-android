@@ -2,6 +2,8 @@
     <string name="app_name">Magpie\'s Nest</string>
     <string name="btn_new_activity">New Activity</string>
     <string name="btn_product">Product</string>
+    <string name="price_line">Price:</string>
+    <string name="currency_sign">SEK</string>
     <string name="btn_get_http">Get Camels</string>
 
     <string name="create_product_form_headline">Fill in the form:</string>
