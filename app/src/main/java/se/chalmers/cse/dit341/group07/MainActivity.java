@@ -1,7 +1,9 @@
 package se.chalmers.cse.dit341.group07;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.AdapterView;
+import android.widget.Toast;
+import android.view.Menu;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,7 +38,8 @@ import se.chalmers.cse.dit341.group07.model.Review;
 import se.chalmers.cse.dit341.group07.model.PaymentData;
 
 
-public class StartScreen extends AppCompatActivity implements Serializable {
+
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     // Field for parameter name
     public static final String HTTP_PARAM = "httpResponse";
@@ -45,9 +52,9 @@ public class StartScreen extends AppCompatActivity implements Serializable {
 
 
         products.add(new Product("Young pup", 200, R.drawable.puppy));
-        products.add(new Product("Good wheel", 33, R.drawable.puppy));
-        products.add(new Product("Human Resources", 10000, R.drawable.puppy));
-        products.add(new Product("My Soul", 8, R.drawable.puppy));
+        products.add(new Product("Good wheel", 33, R.drawable.flat_tire));
+        products.add(new Product("Human Resources", 10000, R.drawable.kid));
+        products.add(new Product("My Soul", 8, R.drawable.soul));
 
 
         // Create an ProductAdapter, whose data source is a list of Products
@@ -61,11 +68,22 @@ public class StartScreen extends AppCompatActivity implements Serializable {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //Dessert dessert = desserts.get(i);
-                Intent selectedProduct = new Intent(StartScreen.this, ProductScreen.class);
+                Intent selectedProduct = new Intent(MainActivity.this, ProductScreen.class);
                 startActivity(selectedProduct);
             }
         });
+
+        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int orientation = display.getOrientation();
+        switch(orientation) {
+        case Configuration.ORIENTATION_PORTRAIT:
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        break;
+        case Configuration.ORIENTATION_LANDSCAPE:
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        break;
+        }
+
     }
 
     public void onClickCreateProduct (View view) {
@@ -95,9 +113,15 @@ public class StartScreen extends AppCompatActivity implements Serializable {
     }
 
 
-
-    public void addProduct(String name, int price, int image) {
-        products.add(new Product( name, price, R.drawable.puppy));
+    // Check screen orientation or screen rotate event here
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
     }
-
 }

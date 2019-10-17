@@ -14,27 +14,36 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="se.chalmers.cse.dit341.group07.StartScreen">
+
+
+        <activity android:name="se.chalmers.cse.dit341.group07.MainActivity"
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity android:name="se.chalmers.cse.dit341.group07.ProductScreen"
             android:label="@string/product_headline"
-            android:parentActivityName="se.chalmers.cse.dit341.group07.StartScreen">
+            android:configChanges="orientation|keyboardHidden"
+            android:parentActivityName="se.chalmers.cse.dit341.group07.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="se.chalmers.cse.dit341.group07.StartScreen" />
+                android:value="se.chalmers.cse.dit341.group07.MainActivity" />
         </activity>
+
+
         <activity android:name="se.chalmers.cse.dit341.group07.CreateProduct"
-            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/create_product_headline"
-            android:parentActivityName="se.chalmers.cse.dit341.group07.StartScreen">
+            android:launchMode="singleTask"
+            android:parentActivityName="se.chalmers.cse.dit341.group07.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="se.chalmers.cse.dit341.group07.StartScreen" />
+                android:value="se.chalmers.cse.dit341.group07.MainActivity" />
         </activity>
     </application>
 
