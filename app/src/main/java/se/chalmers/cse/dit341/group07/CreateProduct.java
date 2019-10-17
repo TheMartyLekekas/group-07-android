@@ -49,10 +49,9 @@ public class CreateProduct extends AppCompatActivity {
             value = priceField.getText().toString();
             price = Integer.parseInt(value);
             category = categorySpinner.getSelectedItem().toString();
-            final int request_code = 1;
 
             int fakeImageId = 0;
-            Product newProduct = new Product(name, price, fakeImageId);
+            Product newProduct = new Product(name, price, R.drawable.puppy);
             Intent resultIntent = new Intent();
             resultIntent.putExtra("passedProduct", newProduct);
             setResult(RESULT_OK, resultIntent);

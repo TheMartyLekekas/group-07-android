@@ -3,15 +3,16 @@
     <string name="btn_new_activity">New Activity</string>
     <string name="btn_product">Product</string>
     <string name="price_line">Price:</string>
-    <string name="currency_sign">SEK</string>
-    <string name="btn_get_http">Get Camels</string>
+    <string name="currency_sign">\ SEK</string>
+    <string name="product_image">Image of the product</string>
+
 
     <string name="create_product_form_headline">Fill in the form:</string>
     <string name="product_name">Product\'s name</string>
     <string name="product_description">Description</string>
     <string name="product_price">Price</string>
     <string name="publish_product">Publish</string>
-    <string name="product_image">Image of the product</string>
+
 
     <string name="category_type">Category</string>
     <string name="category_type1">Clothing &amp; Accessories</string>

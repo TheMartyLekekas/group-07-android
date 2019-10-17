@@ -43,10 +43,10 @@ public class StartScreen extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_main);
 
 
-        products.add(new Product("Young pup", 200, 30));
-        products.add(new Product("Good wheel", 33, 30));
-        products.add(new Product("Human Resources", 10000, 20));
-        products.add(new Product("My Soul", 8, 20));
+        products.add(new Product("Young pup", 200, R.drawable.puppy));
+        products.add(new Product("Good wheel", 33, R.drawable.puppy));
+        products.add(new Product("Human Resources", 10000, R.drawable.puppy));
+        products.add(new Product("My Soul", 8, R.drawable.puppy));
 
         // Create an ProductAdapter, whose data source is a list of Products
         ProductAdapter newAdapter = new ProductAdapter(this, products);

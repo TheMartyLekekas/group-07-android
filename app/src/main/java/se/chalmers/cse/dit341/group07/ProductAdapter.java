@@ -63,11 +63,11 @@ public class ProductAdapter extends ArrayAdapter<Product> implements Serializabl
         TextView numberTextView = listItemView.findViewById(R.id.product_price);
         numberTextView.setText(String.valueOf(currentProduct.getPrice()));
 
-        TextView imageTextView = listItemView.findViewById(R.id.product_image_id);
-        imageTextView.setText(String.valueOf(currentProduct.getImageResourceId()));
+//        TextView imageTextView = listItemView.findViewById(R.id.product_image_id);
+//        imageTextView.setText(String.valueOf(currentProduct.getImageResourceId()));
 
-//        ImageView iconView = listItemView.findViewById(R.id.list_item_icon);
-//        iconView.setImageResource(currentProduct.getImageResourceId());
+        ImageView iconView = listItemView.findViewById(R.id.list_item_icon);
+        iconView.setImageResource(currentProduct.getImageResourceId());
 
         return listItemView;
     }
