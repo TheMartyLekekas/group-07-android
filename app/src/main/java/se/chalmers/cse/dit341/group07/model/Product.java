@@ -31,9 +31,11 @@ public class Product implements Serializable {
         this.imageResourceId = imageResourceId;
     }
 
-    public Product (String name, String description){
+    public Product (String name, String description, int price, String category){
         this.name = name;
         this.description = description;
+        this.price = price;
+        this.category = new Category(category);
     }
 
 

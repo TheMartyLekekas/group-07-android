@@ -15,8 +15,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,9 +29,8 @@ import se.chalmers.cse.dit341.group07.model.Product;
 
 public class CreateProduct extends AppCompatActivity {
     DatabaseHelper myDb;
-    RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
-    String url = "http://localhost:3000/api/products";
+    String url = "https://webshop-gu-backend.herokuapp.com/api/products";
 
     private void addProduct(String product){
         Log.i("WATCH HERE", "HERE!");
@@ -72,32 +75,42 @@ public class CreateProduct extends AppCompatActivity {
 
             int fakeImageId = 0;
 
-            Product newProduct = new Product(name, description);
+            Product newProduct = new Product(name, description, price, category);
 
-            StringRequest MyStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
+
+            JSONObject parameters = new JSONObject();
+            try {
+                JSONObject categoryParameter = new JSONObject();
+                categoryParameter.put("name","Ele");
+
+                parameters.put("name", name);
+                parameters.put("description", description);
+                parameters.put("price", price);
+                parameters.put("category", categoryParameter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            Log.d("PARAMS", parameters.toString());
+            JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.POST, url, parameters, new Response.Listener<JSONObject>() {
                 @Override
-                public void onResponse(String response) {
-                    addProduct(response);
+                public void onResponse(JSONObject response) {
+                    Log.d("GOTIT", response.toString());
+                    addProduct(response.toString());
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
                 }
-            }) {
-                protected Map<String, String> getParams() {
-                    Map<String, String> MyData = new HashMap<String, String>();
-                    MyData.put("name", newProduct.getName()); //Add the data you'd like to send to the server.
-                    MyData.put("description", newProduct.getDescription());
-                    return MyData;
-                }
-            };
+            });
 
-            MyRequestQueue.add(MyStringRequest);
+            MyRequestQueue.add(MyJsonRequest);
 
-            Intent resultIntent = new Intent();
+            /*Intent resultIntent = new Intent();
             resultIntent.putExtra("passedProduct", newProduct);
-            setResult(RESULT_OK, resultIntent);
+            setResult(RESULT_OK, resultIntent);*/
             finish();
         }
     }
