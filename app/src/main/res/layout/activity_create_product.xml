@@ -31,11 +31,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/create_product_form_headline"
+                android:textStyle="bold"
                 android:textSize="10pt" />
 
             <EditText
                 android:id="@+id/input_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/create_product_headline"
                 android:hint="@string/product_name" />
@@ -49,7 +50,7 @@
 
             <EditText
                 android:id="@+id/input_price"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/input_description"
                 android:hint="@string/product_price"
@@ -70,9 +71,10 @@
         android:id="@+id/publish_product_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:onClick="onClickPublishProduct"
         android:text="@string/publish_product"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
