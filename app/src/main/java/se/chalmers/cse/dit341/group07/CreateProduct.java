@@ -6,14 +6,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import se.chalmers.cse.dit341.group07.model.Product;
 
 public class CreateProduct extends AppCompatActivity {
+    DatabaseHelper myDb;
+    RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
+
+    String url = "http://localhost:3000/api/products";
+
+    private void addProduct(String product){
+        Log.i("WATCH HERE", "HERE!");
+        Log.i("PRODUKT", product);
+        //myDb.addProduct(product);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +71,30 @@ public class CreateProduct extends AppCompatActivity {
             category = categorySpinner.getSelectedItem().toString();
 
             int fakeImageId = 0;
-            Product newProduct = new Product(name, price, R.drawable.puppy);
+
+            Product newProduct = new Product(name, description);
+
+            StringRequest MyStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    addProduct(response);
+                }
+            }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            }) {
+                protected Map<String, String> getParams() {
+                    Map<String, String> MyData = new HashMap<String, String>();
+                    MyData.put("name", newProduct.getName()); //Add the data you'd like to send to the server.
+                    MyData.put("description", newProduct.getDescription());
+                    return MyData;
+                }
+            };
+
+            MyRequestQueue.add(MyStringRequest);
+
             Intent resultIntent = new Intent();
             resultIntent.putExtra("passedProduct", newProduct);
             setResult(RESULT_OK, resultIntent);

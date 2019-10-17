@@ -3,7 +3,7 @@ package se.chalmers.cse.dit341.group07.model;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private String productName;
+    private String name;
     private String description;
     private int price;
     private Seller seller;
@@ -19,10 +19,10 @@ public class Product implements Serializable {
      * @param vNumber is the corresponding number of desserts
      * @param image is drawable reference ID that corresponds to the dessert
      * */
-    public Product(String productName, int price, int imageResourceId)    //, String description, Seller seller, Category category, Review reviews[]
+    public Product(String name, int price, int imageResourceId)    //, String description, Seller seller, Category category, Review reviews[]
 
     {
-        this.productName = productName;
+        this.name = name;
         this.description = description;
         this.price = price;
         this.seller = seller;
@@ -31,9 +31,14 @@ public class Product implements Serializable {
         this.imageResourceId = imageResourceId;
     }
 
+    public Product (String name, String description){
+        this.name = name;
+        this.description = description;
+    }
 
-    public String getProductName() {
-        return this.productName;
+
+    public String getName() {
+        return this.name;
     }
 
     public int getPrice() {
@@ -42,6 +47,10 @@ public class Product implements Serializable {
 
     public int getImageResourceId() {
         return this.imageResourceId;
+    }
+
+    public String getDescription(){
+        return this.description;
     }
 }
 
