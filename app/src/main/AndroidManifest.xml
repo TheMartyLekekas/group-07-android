@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name="se.chalmers.cse.dit341.group07.ProductScreen"
+            android:label="@string/product_headline"
             android:parentActivityName="se.chalmers.cse.dit341.group07.StartScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

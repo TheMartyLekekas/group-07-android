@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ListView;
+import android.widget.AdapterView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -48,12 +49,23 @@ public class StartScreen extends AppCompatActivity implements Serializable {
         products.add(new Product("Human Resources", 10000, R.drawable.puppy));
         products.add(new Product("My Soul", 8, R.drawable.puppy));
 
+
         // Create an ProductAdapter, whose data source is a list of Products
         ProductAdapter newAdapter = new ProductAdapter(this, products);
 
         // Get a reference to the ListView, and attach the adapter to the listView.
         ListView listView = (ListView) findViewById(R.id.listview_product);
         listView.setAdapter(newAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //Dessert dessert = desserts.get(i);
+                Intent selectedProduct = new Intent(StartScreen.this, ProductScreen.class);
+                startActivity(selectedProduct);
+            }
+        });
     }
 
     public void onClickCreateProduct (View view) {
