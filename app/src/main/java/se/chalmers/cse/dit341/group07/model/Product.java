@@ -12,13 +12,6 @@ public class Product implements Serializable {
     private int imageResourceId;
 
 
-    /*
-     * Create a new dessert object.
-     *
-     * @param vName is the name of the dessert
-     * @param vNumber is the corresponding number of desserts
-     * @param image is drawable reference ID that corresponds to the dessert
-     * */
     public Product(String productName, int price, int imageResourceId)    //, String description, Seller seller, Category category, Review reviews[]
 
     {

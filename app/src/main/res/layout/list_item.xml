@@ -32,9 +32,9 @@
         android:textSize="8pt"/>
     <TextView
         android:id="@+id/currency_sign"
+        android:text="@string/currency_sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/currency_sign"
         android:textSize="8pt"/>
 
 </LinearLayout>
