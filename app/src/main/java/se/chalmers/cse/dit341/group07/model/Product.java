@@ -3,7 +3,8 @@ package se.chalmers.cse.dit341.group07.model;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private String productName;
+    private String id;
+    private String name;
     private String description;
     private int price;
     private Seller seller;
@@ -11,22 +12,25 @@ public class Product implements Serializable {
     private Review reviews[];
     private int imageResourceId;
 
-
-    public Product(String productName, int price, int imageResourceId)    //, String description, Seller seller, Category category, Review reviews[]
-
-    {
-        this.productName = productName;
+    public Product (String name, String description, int price, String category){
+        this.name = name;
         this.description = description;
         this.price = price;
-        this.seller = seller;
-        this.category = category;
-        this.reviews = reviews;
-        this.imageResourceId = imageResourceId;
+        this.category = new Category(category);
+    }
+
+    public Product (String id, String name, String description, int price, String category){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = new Category(category);
     }
 
 
-    public String getProductName() {
-        return this.productName;
+
+    public String getName() {
+        return this.name;
     }
 
     public int getPrice() {
@@ -35,6 +39,10 @@ public class Product implements Serializable {
 
     public int getImageResourceId() {
         return this.imageResourceId;
+    }
+
+    public String getDescription(){
+        return this.description;
     }
 }
 

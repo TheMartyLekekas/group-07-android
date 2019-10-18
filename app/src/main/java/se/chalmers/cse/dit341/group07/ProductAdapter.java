@@ -58,7 +58,7 @@ public class ProductAdapter extends ArrayAdapter<Product> implements Serializabl
         // Find the TextView in the list_item.xml layout with the ID product_name,
         // product_number, list_item_icon and set them to respective views
         TextView nameTextView = listItemView.findViewById(R.id.product_name);
-        nameTextView.setText(currentProduct.getProductName());
+        nameTextView.setText(currentProduct.getName());
 
         TextView numberTextView = listItemView.findViewById(R.id.product_price);
         numberTextView.setText(String.valueOf(currentProduct.getPrice()));
