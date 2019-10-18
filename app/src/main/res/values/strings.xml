@@ -15,8 +15,12 @@
     <string name="product_price">Price</string>
     <string name="publish_product">Publish</string>
 
+    <string name="product_name_placeholder">Product\'s name here</string>
+    <string name="product_description_placeholder">Long or short description all around here</string>
+    <string name="product_price_placeholder">Amazing price in\ </string>
 
-    <string name="category_type">Category</string>
+
+    <string name="category_type">Select a category</string>
     <string name="category_type1">Clothing &amp; Accessories</string>
     <string name="category_type2">Electronics</string>
     <string name="category_type3">Furniture</string>

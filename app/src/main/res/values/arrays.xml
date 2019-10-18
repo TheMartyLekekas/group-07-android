@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="category_type_list">
+        <item>@string/category_type</item>
         <item>@string/category_type1</item>
         <item>@string/category_type2</item>
         <item>@string/category_type3</item>

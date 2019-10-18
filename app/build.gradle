@@ -4,7 +4,7 @@ android {
     buildToolsVersion "28.0.3"
     compileSdkVersion 28
     defaultConfig {
-        applicationId "se.chalmers.cse.dit341.group00"
+        applicationId "se.chalmers.cse.dit341.group07"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
