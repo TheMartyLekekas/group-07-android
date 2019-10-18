@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Magpie\'s Nest</string>
-    <string name="product_headline">Return</string>
     <string name="create_product_headline">Create new product</string>
-    <string name="btn_new_activity">New Activity</string>
+    <string name="update_product_headline">Update product</string>
+    <string name="product_headline">Return</string>
     <string name="btn_product">Product</string>
     <string name="price_line">Price:</string>
     <string name="currency_sign">\ SEK</string>
@@ -10,10 +10,12 @@
 
 
     <string name="create_product_form_headline">Fill in the form:</string>
+    <string name="update_product_form_headline">Update the product\'s info:</string>
     <string name="product_name">Product\'s name</string>
     <string name="product_description">Description</string>
     <string name="product_price">Price</string>
     <string name="publish_product">Publish</string>
+    <string name="update_product">Update</string>
 
     <string name="product_name_placeholder">Product\'s name here</string>
     <string name="product_description_placeholder">Long or short description all around here</string>

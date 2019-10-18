@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         startActivityForResult(intent, request_code);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent newProduct) {
 
