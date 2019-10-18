@@ -23,13 +23,15 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="10pt"/>
+        android:textSize="10pt"
+        android:text="Title"/>
 
     <TextView
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="8pt"/>
+        android:textSize="8pt"
+        android:text="Price"/>
     <TextView
         android:id="@+id/currency_sign"
         android:layout_width="wrap_content"

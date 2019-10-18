@@ -27,6 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,20 +44,66 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     // Field for parameter name
     public static final String HTTP_PARAM = "httpResponse";
-    ArrayList<Product> products = new ArrayList<>();
+    ArrayList<Product> products;
+    DatabaseHelper myDb;
+    String url = "https://webshop-gu-backend.herokuapp.com/api/products";
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray productsArray = response.getJSONArray("products");
+                    Log.d("ARARY", productsArray.toString());
+
+                    products = new ArrayList<>();
+                    for(int i = 0; i < productsArray.length(); i++) {
+                        JSONObject product = productsArray.getJSONObject(i);
+                        Product p = new Product (product.getString("name"), product.getString("description"), product.getInt("price"), product.getJSONObject("category").getString("name"));
+                        products.add(p);
+                        Log.d("ARRAY", p.getName());
+                    }
+
+                }
+                catch(Exception e) {
+
+                }
+                setupAdapter(products);
+            }
+        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        MyRequestQueue.add(MyJsonRequest);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int orientation = display.getOrientation();
+        switch(orientation) {
+        case Configuration.ORIENTATION_PORTRAIT:
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        break;
+        case Configuration.ORIENTATION_LANDSCAPE:
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        break;
+        }
 
-        products.add(new Product("Young pup", 200, R.drawable.puppy));
-        products.add(new Product("Good wheel", 33, R.drawable.flat_tire));
-        products.add(new Product("Human Resources", 10000, R.drawable.kid));
-        products.add(new Product("My Soul", 8, R.drawable.soul));
+    }
 
-
+    private void setupAdapter(ArrayList<Product> products) {
         // Create an ProductAdapter, whose data source is a list of Products
         ProductAdapter newAdapter = new ProductAdapter(this, products);
 
@@ -72,18 +119,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 startActivity(selectedProduct);
             }
         });
-
-        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
-        int orientation = display.getOrientation();
-        switch(orientation) {
-        case Configuration.ORIENTATION_PORTRAIT:
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        break;
-        case Configuration.ORIENTATION_LANDSCAPE:
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        break;
-        }
-
     }
 
     public void onClickCreateProduct (View view) {

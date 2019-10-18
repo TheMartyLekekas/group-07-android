@@ -96,7 +96,6 @@ public class CreateProduct extends AppCompatActivity {
             JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.POST, url, parameters, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.d("GOTIT", response.toString());
                     addProduct(response.toString());
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
