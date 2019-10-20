@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -72,8 +73,6 @@ public class CreateProduct extends AppCompatActivity {
             value = priceField.getText().toString();
             price = Integer.parseInt(value);
             category = categorySpinner.getSelectedItem().toString();
-
-            int fakeImageId = 0;
 
             Product newProduct = new Product(name, description, price, category);
 

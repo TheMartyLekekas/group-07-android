@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.Toast;
-import android.view.Menu;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -31,13 +30,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import se.chalmers.cse.dit341.group07.model.Product;
-import se.chalmers.cse.dit341.group07.model.User;
 import se.chalmers.cse.dit341.group07.model.Seller;
-import se.chalmers.cse.dit341.group07.model.Category;
+import se.chalmers.cse.dit341.group07.model.Product;
 import se.chalmers.cse.dit341.group07.model.Review;
-import se.chalmers.cse.dit341.group07.model.PaymentData;
-
 
 
 public class MainActivity extends AppCompatActivity implements Serializable {
