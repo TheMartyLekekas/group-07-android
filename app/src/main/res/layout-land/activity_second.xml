@@ -18,15 +18,6 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin" >
 
-        <ImageView
-            android:id="@+id/list_item_icon"
-            android:contentDescription="@string/product_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="0dp"
-            android:layout_centerHorizontal="true" />
-
 
         <TextView
             android:id="@+id/textTitle"
@@ -35,8 +26,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textStyle="normal|bold"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/list_item_icon"/>
+            android:layout_centerHorizontal="true" />
 
 
         <TextView

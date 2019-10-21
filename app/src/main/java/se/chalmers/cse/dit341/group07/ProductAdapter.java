@@ -66,8 +66,7 @@ public class ProductAdapter extends ArrayAdapter<Product> implements Serializabl
 //        TextView imageTextView = listItemView.findViewById(R.id.product_image_id);
 //        imageTextView.setText(String.valueOf(currentProduct.getImageResourceId()));
 
-        ImageView iconView = listItemView.findViewById(R.id.list_item_icon);
-        iconView.setImageResource(currentProduct.getImageResourceId());
+
 
         return listItemView;
     }
