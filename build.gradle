@@ -7,6 +7,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'
+
+        //implement 'com.google.code.gson:gson:2.4'
+        //implementation 'com.android.support:recyclerview-v7:26.1.0
         // NOTE: Do NOT place your application dependencies here! They belong
         // into the individual module build.gradle files
     }

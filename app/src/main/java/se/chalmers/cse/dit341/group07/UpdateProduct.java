@@ -75,6 +75,13 @@ public class UpdateProduct extends AppCompatActivity {
             category = categorySpinner.getSelectedItem().toString();
 
 
+            int fakeImageId = 0;
+            //Product newProduct = new Product(name, price, R.drawable.puppy);
+            Intent resultIntent = new Intent();
+            //resultIntent.putExtra("updatedProduct", newProduct);
+            setResult(RESULT_OK, resultIntent);
+
+
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
             JSONObject parameters = new JSONObject();

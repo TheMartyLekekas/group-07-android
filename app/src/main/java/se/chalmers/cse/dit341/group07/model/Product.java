@@ -1,8 +1,11 @@
 package se.chalmers.cse.dit341.group07.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Product implements Serializable {
+    //@SerializedName("id")
     private String id;
     private String name;
     private String description;
@@ -29,6 +32,8 @@ public class Product implements Serializable {
     }
 
 
+
+    public String getId() { return this.id; }
 
     public String getName() {
         return this.name;

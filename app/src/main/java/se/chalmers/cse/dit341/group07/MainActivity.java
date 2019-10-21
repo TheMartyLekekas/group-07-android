@@ -11,6 +11,7 @@ import android.util.Log;
 import java.io.Serializable;
 import java.util.ArrayList;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.AdapterView;
@@ -37,28 +38,38 @@ import se.chalmers.cse.dit341.group07.model.Review;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
+    public static final String name="name";
     // Field for parameter name
     public static final String HTTP_PARAM = "httpResponse";
-    ArrayList<Product> products;
-    DatabaseHelper myDb;
+    public static final ArrayList<Product> products = new ArrayList<>();
     String url = "https://webshop-gu-backend.herokuapp.com/api/products";
+    RequestQueue MyRequestQueue;
+    JsonObjectRequest MyJsonRequest;
 
     @Override
     protected void onResume() {
         super.onResume();
-        RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
+        MyRequestQueue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray productsArray = response.getJSONArray("products");
                     Log.d("ARARY", productsArray.toString());
 
-                    products = new ArrayList<>();
                     for(int i = 0; i < productsArray.length(); i++) {
                         JSONObject product = productsArray.getJSONObject(i);
-                        Product p = new Product (product.getString("_id"), product.getString("name"), product.getString("description"), product.getInt("price"), product.getJSONObject("category").getString("name"), "");
+
+                        String id= product.getString("_id");
+                        String name= product.getString("name");
+                        String description= product.getString("description");
+                        int price= product.getInt("price");
+                        String category= product.getJSONObject("category").getString("name");
+                        //String seller= product.getJSONObject("seller").getString("name");
+
+                        Product p = new Product (id, name, description, price, category, "");
+
                         products.add(p);
                         Log.d("ARRAY", p.getName());
                     }
@@ -108,10 +119,25 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                Toast.makeText(getApplicationContext(),"You clicked"+i,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, ProductScreen.class);
+                Product product= products.get(i);
+                Toast.makeText(getApplicationContext(),"ID: "+product.getId(),Toast.LENGTH_LONG).show();
+                intent.putExtra("ID", product.getId());
+                startActivity(intent);
 
+                /*Product product= products.get(i);
+                product.getId();
+                Toast.makeText(getApplicationContext(),"ID: "+product.getId(),Toast.LENGTH_LONG).show();
                 Intent selectedProduct = new Intent(MainActivity.this, ProductScreen.class);
+                selectedProduct.putExtra("ID", product.getId());
+                //selectedProduct.putExtra("photo", product.getImageResourceId());
+                selectedProduct.putExtra("name", product.getName());
+                selectedProduct.putExtra("description", product.getDescription());
+                selectedProduct.putExtra("price", product.getPrice());
                 startActivity(selectedProduct);
+                 */
             }
         });
     }
