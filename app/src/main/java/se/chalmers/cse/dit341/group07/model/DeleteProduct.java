@@ -39,7 +39,6 @@ public class DeleteProduct extends AppCompatActivity {
 
         JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.DELETE, url,product, new Response.Listener<JSONObject>() {
 
-
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("onResponse", response.toString());

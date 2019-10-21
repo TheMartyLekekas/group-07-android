@@ -71,7 +71,6 @@ public class ProductScreen extends AppCompatActivity {
         MyRequestQueue.add(MyJsonRequest);
     }
 
-<<<<<<< HEAD
     public void onClickUpdateProduct (View view) {
         TextView productView = findViewById(R.id.update_product_btn);
 
@@ -102,7 +101,4 @@ public class ProductScreen extends AppCompatActivity {
             }
         }
     }
-
-=======
->>>>>>> 7215bdc21ff0be7b33112ccc8074f1a382268c74
 }

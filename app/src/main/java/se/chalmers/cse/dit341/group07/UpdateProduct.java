@@ -74,13 +74,12 @@ public class UpdateProduct extends AppCompatActivity {
             price = Integer.parseInt(value);
             category = categorySpinner.getSelectedItem().toString();
 
-<<<<<<< HEAD
             int fakeImageId = 0;
             //Product newProduct = new Product(name, price, R.drawable.puppy);
             Intent resultIntent = new Intent();
             //resultIntent.putExtra("updatedProduct", newProduct);
             setResult(RESULT_OK, resultIntent);
-=======
+
             Product newProduct = new Product(name, description, price, category);
 
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
@@ -116,7 +115,6 @@ public class UpdateProduct extends AppCompatActivity {
             /*Intent resultIntent = new Intent();
             resultIntent.putExtra("passedProduct", newProduct);
             setResult(RESULT_OK, resultIntent);*/
->>>>>>> 7215bdc21ff0be7b33112ccc8074f1a382268c74
             finish();
         }
     }

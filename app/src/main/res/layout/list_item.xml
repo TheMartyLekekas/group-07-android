@@ -10,17 +10,12 @@
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:padding="16dp">
 
-<<<<<<< HEAD
     <ImageView
         android:id="@+id/list_item_icon"
         android:contentDescription="@string/product_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/ic_launcher"/>
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="0dp"/>
-=======
->>>>>>> 7215bdc21ff0be7b33112ccc8074f1a382268c74
 
     <TextView
         android:id="@+id/product_name"
