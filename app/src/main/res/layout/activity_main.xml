@@ -20,15 +20,16 @@
     <Button
         android:id="@+id/create_product_btn"
         android:text="@string/btn_product"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/create_product_btn"
         android:textColor="@color/colorWhite"
         android:onClick="onClickCreateProduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </android.support.constraint.ConstraintLayout>

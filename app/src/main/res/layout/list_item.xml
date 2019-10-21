@@ -10,6 +10,7 @@
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:padding="16dp">
 
+<<<<<<< HEAD
     <ImageView
         android:id="@+id/list_item_icon"
         android:contentDescription="@string/product_image"
@@ -18,6 +19,8 @@
         android:src="@mipmap/ic_launcher"/>
         android:layout_marginEnd="10dp"
         android:layout_marginRight="0dp"/>
+=======
+>>>>>>> 7215bdc21ff0be7b33112ccc8074f1a382268c74
 
     <TextView
         android:id="@+id/product_name"
@@ -39,6 +42,21 @@
         android:text="@string/currency_sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
         android:textSize="8pt"/>
 
+    <Button
+        android:id="@+id/update_product_btn"
+        android:text="@string/update_product"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:onClick="onClickUpdateProduct"
+        android:focusable="false"/>
+
+
 </LinearLayout>
+
+

@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.Toast;
-import android.view.Menu;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -32,13 +31,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import se.chalmers.cse.dit341.group07.model.Product;
-import se.chalmers.cse.dit341.group07.model.User;
 import se.chalmers.cse.dit341.group07.model.Seller;
-import se.chalmers.cse.dit341.group07.model.Category;
+import se.chalmers.cse.dit341.group07.model.Product;
 import se.chalmers.cse.dit341.group07.model.Review;
-import se.chalmers.cse.dit341.group07.model.PaymentData;
-
 
 
 public class MainActivity extends AppCompatActivity implements Serializable {
@@ -156,6 +151,17 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         startActivityForResult(intent, request_code);
     }
 
+    public void onClickUpdateProduct (View view) {
+        TextView productView = findViewById(R.id.update_product_btn);
+
+        // Starts a new activity, providing the text from my HTTP text field as an input
+        Intent intent = new Intent(this, UpdateProduct.class);
+        intent.putExtra(HTTP_PARAM, productView.getText().toString());
+
+        final int request_code = 2;
+        startActivityForResult(intent, request_code);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent newProduct) {
 
@@ -166,6 +172,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //code if there's no result
+            }
+
+        } else if(requestCode == 2) {
+            if(resultCode == Activity.RESULT_OK){
+                Product updatedProduct = (Product) newProduct.getSerializableExtra("passedProduct");
+                products.add(updatedProduct);
             }
         }
     }

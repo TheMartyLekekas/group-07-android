@@ -6,7 +6,6 @@ public class User {
     public String lastName;
     public String email;
     public String password;
-    public PaymentData paymentData[];
 
     User() {
     }

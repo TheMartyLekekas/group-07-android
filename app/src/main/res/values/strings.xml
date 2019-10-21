@@ -3,7 +3,7 @@
     <string name="create_product_headline">Create new product</string>
     <string name="update_product_headline">Update product</string>
     <string name="product_headline">Return</string>
-    <string name="btn_product">Product</string>
+    <string name="btn_product">New Item</string>
     <string name="price_line">Price:</string>
     <string name="currency_sign">\ SEK</string>
     <string name="product_image">Image of the product</string>
@@ -14,6 +14,7 @@
     <string name="product_name">Product\'s name</string>
     <string name="product_description">Description</string>
     <string name="product_price">Price</string>
+    <string name="product_category">Category</string>
     <string name="publish_product">Publish</string>
     <string name="update_product">Update</string>
 

@@ -6,14 +6,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import se.chalmers.cse.dit341.group07.model.Product;
 
 public class UpdateProduct extends AppCompatActivity {
+    DatabaseHelper myDb;
+
+    String url = "https://webshop-gu-backend.herokuapp.com/api/products";
+
+    private void renewProduct(String product){
+        Log.i("WATCH HERE", "HERE!");
+        Log.i("PRODUKT", product);
+        //myDb.addProduct(product);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +74,49 @@ public class UpdateProduct extends AppCompatActivity {
             price = Integer.parseInt(value);
             category = categorySpinner.getSelectedItem().toString();
 
+<<<<<<< HEAD
             int fakeImageId = 0;
             //Product newProduct = new Product(name, price, R.drawable.puppy);
             Intent resultIntent = new Intent();
             //resultIntent.putExtra("updatedProduct", newProduct);
             setResult(RESULT_OK, resultIntent);
+=======
+            Product newProduct = new Product(name, description, price, category);
+
+            RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
+
+            JSONObject parameters = new JSONObject();
+            try {
+                JSONObject categoryParameter = new JSONObject();
+                categoryParameter.put("name","Ele");
+
+                parameters.put("name", name);
+                parameters.put("description", description);
+                parameters.put("price", price);
+                parameters.put("category", categoryParameter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            Log.d("PARAMS", parameters.toString());
+            JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.PUT, url, parameters, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    renewProduct(response.toString());
+                }
+            }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+
+            MyRequestQueue.add(MyJsonRequest);
+
+            /*Intent resultIntent = new Intent();
+            resultIntent.putExtra("passedProduct", newProduct);
+            setResult(RESULT_OK, resultIntent);*/
+>>>>>>> 7215bdc21ff0be7b33112ccc8074f1a382268c74
             finish();
         }
     }
