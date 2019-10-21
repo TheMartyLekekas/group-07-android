@@ -74,7 +74,6 @@ public class UpdateProduct extends AppCompatActivity {
             price = Integer.parseInt(value);
             category = categorySpinner.getSelectedItem().toString();
 
-            Product newProduct = new Product(name, description, price, category);
 
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 

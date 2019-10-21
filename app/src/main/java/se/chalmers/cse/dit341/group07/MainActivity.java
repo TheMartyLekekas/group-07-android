@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     products = new ArrayList<>();
                     for(int i = 0; i < productsArray.length(); i++) {
                         JSONObject product = productsArray.getJSONObject(i);
-                        Product p = new Product (product.getString("_id"), product.getString("name"), product.getString("description"), product.getInt("price"), product.getJSONObject("category").getString("name"));
+                        Product p = new Product (product.getString("_id"), product.getString("name"), product.getString("description"), product.getInt("price"), product.getJSONObject("category").getString("name"), "");
                         products.add(p);
                         Log.d("ARRAY", p.getName());
                     }

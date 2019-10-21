@@ -9,22 +9,23 @@ public class Product implements Serializable {
     private int price;
     private Seller seller;
     private Category category;
-    private Review reviews[];
     private int imageResourceId;
 
-    public Product (String name, String description, int price, String category){
+    public Product (String name, String description, int price, String category, String seller){
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = new Category(category);
+        this.seller = new Seller(seller);
     }
 
-    public Product (String id, String name, String description, int price, String category){
+    public Product (String id, String name, String description, int price, String category, String seller){
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = new Category(category);
+        this.seller = new Seller(seller);
     }
 
 

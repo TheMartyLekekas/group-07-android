@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,16 +48,11 @@ public class CreateProduct extends AppCompatActivity {
 
     public void onClickPublishProduct(View Button) {
 //        TextView productView = findViewById(R.id.publish_product_btn);
-
         final EditText nameField = findViewById(R.id.input_name);
         final EditText descriptionField = findViewById(R.id.input_description);
         final EditText priceField = findViewById(R.id.input_price);
         final Spinner categorySpinner = findViewById(R.id.spinner_category_type);
-        String name;
-        String description = "";
-        String value;
-        int price;
-        String category = "";
+        final EditText sellerField = findViewById(R.id.input_seller);
 
         if( TextUtils.isEmpty(nameField.getText())){
             nameField.setError( "Please fill in the name" );
@@ -68,25 +64,30 @@ public class CreateProduct extends AppCompatActivity {
             priceField.setError( "Please specify the price" );
 
         }else{
-            name = nameField.getText().toString();
-            description = descriptionField.getText().toString();
-            value = priceField.getText().toString();
-            price = Integer.parseInt(value);
-            category = categorySpinner.getSelectedItem().toString();
-
-            Product newProduct = new Product(name, description, price, category);
+            String name = nameField.getText().toString();
+            String description = descriptionField.getText().toString();
+            String value = priceField.getText().toString();
+            int price = Integer.parseInt(value);
+            String category = categorySpinner.getSelectedItem().toString();
+            String seller = sellerField.getText().toString();
 
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
             JSONObject parameters = new JSONObject();
             try {
                 JSONObject categoryParameter = new JSONObject();
-                categoryParameter.put("name","Ele");
+                categoryParameter.put("name",category);
+
+                JSONObject sellerJSON = new JSONObject();
+                sellerJSON.put("name",seller);
+                JSONArray sellerParameter = new JSONArray();
+                sellerParameter.put(sellerJSON);
 
                 parameters.put("name", name);
                 parameters.put("description", description);
                 parameters.put("price", price);
                 parameters.put("category", categoryParameter);
+                parameters.put("sellers", sellerParameter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
