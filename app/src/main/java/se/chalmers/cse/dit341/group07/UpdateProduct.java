@@ -51,9 +51,9 @@ public class UpdateProduct extends AppCompatActivity {
             category = categorySpinner.getSelectedItem().toString();
 
             int fakeImageId = 0;
-            Product newProduct = new Product(name, price, R.drawable.puppy);
+            //Product newProduct = new Product(name, price, R.drawable.puppy);
             Intent resultIntent = new Intent();
-            resultIntent.putExtra("updatedProduct", newProduct);
+            //resultIntent.putExtra("updatedProduct", newProduct);
             setResult(RESULT_OK, resultIntent);
             finish();
         }

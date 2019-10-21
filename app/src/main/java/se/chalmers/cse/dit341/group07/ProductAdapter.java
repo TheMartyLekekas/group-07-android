@@ -19,7 +19,14 @@ import se.chalmers.cse.dit341.group07.model.Product;
  * based on a data source, which is a list of {@link Product} objects.
  * */
 public class ProductAdapter extends ArrayAdapter<Product> implements Serializable {
+private OnItemClickListener mListener;
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    public void setOnItemListener(OnItemClickListener listner){
+        mListener=listner;
+    }
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
      * The context is used to inflate the layout file, and the list is the data we want

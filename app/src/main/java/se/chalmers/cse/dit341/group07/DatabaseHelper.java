@@ -47,4 +47,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return data;
     }
+
+    public Integer deleteProduct(Integer id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        return  db.delete("products", "id=?", new String[]{Integer.toString(id)});
+    }
+    public void delete(String id)
+    {
+        String[] args={id};
+        getWritableDatabase().delete("products", "_ID=?", args);
+    }
+    public void deleteAllProducts()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME,null,null);
+        db.execSQL(" DELETE FROM " + TABLE_NAME);
+        db.execSQL("vacuum"); //clear all allocated spaces
+        db.close();
+    }
+
 }
