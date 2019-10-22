@@ -13,7 +13,6 @@ public class Product implements Serializable {
     private int price;
     private Seller seller;
     private Category category;
-    private int imageResourceId;
 
     public Product (String name, String description, int price, String category, String seller){
         this.name = name;
@@ -42,10 +41,6 @@ public class Product implements Serializable {
 
     public int getPrice() {
         return this.price;
-    }
-
-    public int getImageResourceId() {
-        return this.imageResourceId;
     }
 
     public String getDescription(){

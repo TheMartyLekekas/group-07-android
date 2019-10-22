@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.Serializable;
@@ -69,11 +68,6 @@ private OnItemClickListener mListener;
 
         TextView numberTextView = listItemView.findViewById(R.id.product_price);
         numberTextView.setText(String.valueOf(currentProduct.getPrice()));
-
-//        TextView imageTextView = listItemView.findViewById(R.id.product_image_id);
-//        imageTextView.setText(String.valueOf(currentProduct.getImageResourceId()));
-
-
 
         return listItemView;
     }

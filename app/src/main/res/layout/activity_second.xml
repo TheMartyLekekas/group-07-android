@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -22,35 +23,14 @@
         app:layout_constraintStart_toStartOf="parent">
 
 
-        <ImageView
-            android:id="@+id/list_item_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="0dp"
-            android:contentDescription="@string/product_image" />
-
-
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_below="@id/list_item_icon"
-            android:layout_centerHorizontal="true"
-            android:text="@string/product_image"
-            android:textSize="20sp"
-            android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/name_placeholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textTitle"
             android:layout_centerHorizontal="true"
             android:text="@string/product_name_placeholder"
-            android:textSize="20sp"
+            android:textSize="15pt"
             android:textStyle="normal|bold" />
 
 
@@ -64,6 +44,17 @@
             android:textSize="20sp"
             android:textStyle="normal|bold" />
 
+
+        <TextView
+            android:id="@+id/price_text_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description_placeholder"
+            android:layout_centerHorizontal="true"
+            android:layout_toStartOf="@id/price_placeholder"
+            android:layout_toLeftOf="@id/price_placeholder"
+            android:text="@string/price_headline"
+            android:textSize="8pt" />
         <TextView
             android:id="@+id/price_placeholder"
             android:layout_width="wrap_content"
@@ -72,7 +63,6 @@
             android:layout_centerHorizontal="true"
             android:text=""
             android:textSize="8pt" />
-
         <TextView
             android:id="@+id/currency_sign_placeholder"
             android:layout_width="wrap_content"
@@ -85,29 +75,15 @@
             android:textSize="8pt" />
 
         <Button
-            android:id="@+id/delete_product_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Delete"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorWhite"
-            android:onClick="onClickDeleteProduct"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <Button
             android:id="@+id/reviews_btn"
+            android:text="@string/reviews_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="82dp"
-            android:background="@color/colorPrimary"
+            android:layout_below="@id/currency_sign_placeholder"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
             android:onClick="onClickReviews"
-            android:text="Reviews"
+            android:background="@color/colorPrimary"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -127,6 +103,35 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/delete_product_btn"
+        android:text="@string/delete_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:onClick="onClickDeleteProduct"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/update_product_btn"
+        android:text="@string/update_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:onClick="onClickUpdateProduct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>
