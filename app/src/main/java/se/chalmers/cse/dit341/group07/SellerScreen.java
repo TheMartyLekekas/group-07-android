@@ -37,7 +37,7 @@ public class SellerScreen extends AppCompatActivity {
 
         setContentView(R.layout.activity_seller);
 
-        final TextView Sname = findViewById(R.id.seller_name);
+        final TextView Sname = findViewById(R.id.seller_placeholder);
         //final TextView PID = findViewById(R.id.product_id);
         savedInstanceState=getIntent().getExtras();
         this.id=savedInstanceState.getString("ID");

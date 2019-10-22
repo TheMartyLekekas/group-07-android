@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.view.View;
 
@@ -28,8 +29,8 @@ public class ProductScreen extends AppCompatActivity {
     String nameForUpdate;
     String descriptionForUpdate;
     String priceForUpdate;
-    String categoryForUpdate;
     String sellerForUpdate;
+    String categoryForUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class ProductScreen extends AppCompatActivity {
         final TextView Tname = findViewById(R.id.name_placeholder);
         final TextView Tdescription = findViewById(R.id.description_placeholder);
         final TextView Tprice = findViewById(R.id.price_placeholder);
+        final TextView Tseller = findViewById(R.id.seller_placeholder);
+        final TextView Tcategory = findViewById(R.id.category_placeholder);
         savedInstanceState = getIntent().getExtras();
         String id = savedInstanceState.getString("ID");
         this.id = id;
@@ -60,6 +63,14 @@ public class ProductScreen extends AppCompatActivity {
                     String price = product.getString("price");
                     Tprice.setText(price);
                     priceForUpdate = price;
+
+                    String seller = product.getString("seller");
+                    Tseller.setText(seller);
+                    sellerForUpdate = seller;
+
+                    String category = product.getString("category");
+                    Tcategory.setText(category);
+                    categoryForUpdate = category;
                 }
                 catch(Exception e) {
 
@@ -84,6 +95,8 @@ public class ProductScreen extends AppCompatActivity {
         intent.putExtra("name", nameForUpdate);
         intent.putExtra("description", descriptionForUpdate);
         intent.putExtra("price", priceForUpdate);
+        intent.putExtra("seller", sellerForUpdate);
+        intent.putExtra("category", categoryForUpdate);
 
         final int request_code = 1;
         startActivityForResult(intent, request_code);

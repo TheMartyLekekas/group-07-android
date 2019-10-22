@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/description_placeholder"
             android:layout_centerHorizontal="true"
-            android:text=""
+            android:text="@string/product_price_placeholder"
             android:textSize="8pt" />
         <TextView
             android:id="@+id/currency_sign_placeholder"
@@ -74,35 +74,46 @@
             android:text="@string/currency_sign"
             android:textSize="8pt" />
 
+        <TextView
+            android:id="@+id/category_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_placeholder"
+            android:layout_centerHorizontal="true"
+            android:text="@string/category_placeholder"
+            android:textSize="8pt" />
+
         <Button
             android:id="@+id/reviews_btn"
             android:text="@string/reviews_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/currency_sign_placeholder"
+            android:layout_below="@id/category_placeholder"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:onClick="onClickReviews"
             android:background="@color/colorPrimary"
             android:textColor="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
             android:id="@+id/seller_btn"
+            android:text="@string/product_seller_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="151dp"
-            android:background="@color/colorPrimary"
+            android:layout_below="@id/reviews_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:onClick="onClickSeller"
-            android:text="Seller"
+            android:background="@color/colorPrimary"
             android:textColor="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
     </RelativeLayout>
+
 
     <Button
         android:id="@+id/delete_product_btn"

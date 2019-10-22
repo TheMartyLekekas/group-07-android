@@ -33,6 +33,7 @@ public class UpdateProduct extends AppCompatActivity {
     String oldName;
     String oldDescription;
     String oldPrice;
+    String oldSeller;
 
     private void renewProduct(String product) {
         Log.i("WATCH HERE", "HERE!");
@@ -47,7 +48,7 @@ public class UpdateProduct extends AppCompatActivity {
         oldName = getIntent().getStringExtra("name");
         oldDescription = getIntent().getStringExtra("description");
         oldPrice = getIntent().getStringExtra("price");
-//        oldSeller = getIntent().getStringExtra("seller");
+        oldSeller = getIntent().getStringExtra("seller");
     }
 
     public void onClickUpdateProduct(View Button) {
@@ -55,72 +56,77 @@ public class UpdateProduct extends AppCompatActivity {
         final EditText nameField = findViewById(R.id.input_name);
         final EditText descriptionField = findViewById(R.id.input_description);
         final EditText priceField = findViewById(R.id.input_price);
-        final Spinner categorySpinner = findViewById(R.id.spinner_category_type);
         final EditText sellerField = findViewById(R.id.input_seller);
+        final Spinner categorySpinner = findViewById(R.id.spinner_category_type);
 
         String name;
         String description;
         String value;
         String seller;
+        String category;
         boolean patch = false;
+        JSONObject parameters = new JSONObject();
 
-        if( TextUtils.isEmpty(nameField.getText())){
-            name = oldName;
-            patch = true;
-        } else name = nameField.getText().toString();
+        try {
+            if( TextUtils.isEmpty(nameField.getText())){
+//                name = oldName;
+                patch = true;
+            } else {
+                name = nameField.getText().toString();
+                parameters.put("name", name); }
 
-        if( TextUtils.isEmpty(descriptionField.getText())){
-            description = oldDescription;
-            patch = true;
-        } else description = descriptionField.getText().toString();
+            if( TextUtils.isEmpty(descriptionField.getText())){
+//                description = oldDescription;
+                patch = true;
+            } else {
+                description = descriptionField.getText().toString();
+                parameters.put("description", description); }
 
-        if( TextUtils.isEmpty(priceField.getText())){
-            value = oldPrice;
-            patch = true;
-        } else value = priceField.getText().toString();
+            if( TextUtils.isEmpty(priceField.getText())){
+//                value = oldPrice;
+                patch = true;
+            } else {
+                value = priceField.getText().toString();
+                int price = Integer.parseInt(value);
+                parameters.put("price", price);
+            }
 
-        if( TextUtils.isEmpty(sellerField.getText())){
-//            seller = oldSeller;
-            patch = true;
-        } else seller = sellerField.getText().toString();
+            category = categorySpinner.getSelectedItem().toString();
+            if(category.equals("Select a category")){
+                patch = true;
+            }
+            else {
+                JSONObject categoryParameter = new JSONObject();
+//            categoryParameter.put("name", "Ele");
+                categoryParameter.put("name", category);
+                parameters.put("category", categoryParameter);
+            }
 
+            if( TextUtils.isEmpty(sellerField.getText())){
+//                seller = oldSeller;
+                patch = true;
+            } else {
+                seller = sellerField.getText().toString();
+                JSONObject sellerJSON = new JSONObject();
+                sellerJSON.put("name", seller);
+                JSONArray sellerParameter = new JSONArray();
+                sellerParameter.put(sellerJSON);
+                parameters.put("sellers", sellerParameter);
+            }
 
             Intent resultIntent = new Intent();
             //resultIntent.putExtra("updatedProduct", newProduct);
             setResult(RESULT_OK, resultIntent);
 
-
-            int price = Integer.parseInt(value);
-            String category = categorySpinner.getSelectedItem().toString();
-//            String seller = sellerField.getText().toString();
-
-            RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
-
-            JSONObject parameters = new JSONObject();
-            try {
-                JSONObject categoryParameter = new JSONObject();
-                categoryParameter.put("name", "Ele");
-                categoryParameter.put("name", category);
-                JSONObject sellerJSON = new JSONObject();
-//                sellerJSON.put("name", seller);
-                JSONArray sellerParameter = new JSONArray();
-                sellerParameter.put(sellerJSON);
-
-                parameters.put("name", name);
-                parameters.put("description", description);
-                parameters.put("price", price);
-                parameters.put("category", categoryParameter);
-                parameters.put("sellers", sellerParameter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
+            RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
+
             Log.d("PARAMS", parameters.toString());
 
             if (patch){
-                System.out.println("**********************");
-                System.out.println("PATCH PATCH PACK");
-                System.out.println("******************************");
 
                 JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.PATCH, url + "/" + id, parameters, new Response.Listener<JSONObject>() {
 
@@ -137,9 +143,6 @@ public class UpdateProduct extends AppCompatActivity {
             MyRequestQueue.add(MyJsonRequest);
 
             } else{
-                System.out.println("**********************");
-                System.out.println("PUT PUT PUTPELE");
-                System.out.println("******************************");
                 JsonObjectRequest MyJsonRequest = new JsonObjectRequest(Request.Method.PUT, url + "/" + id, parameters, new Response.Listener<JSONObject>() {
 
                     @Override

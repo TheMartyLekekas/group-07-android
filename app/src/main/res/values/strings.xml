@@ -13,6 +13,8 @@
     <string name="product_description">Description</string>
     <string name="product_price">Price</string>
     <string name="product_category">Category</string>
+    <string name="product_seller_btn">Seller</string>
+    <string name="product_seller">Seller:</string>
 
     <string name="btn_product">New Item</string>
     <string name="publish_product">Publish</string>
@@ -23,6 +25,9 @@
     <string name="product_name_placeholder">Product\'s name here</string>
     <string name="product_description_placeholder">Long or short description all around here</string>
     <string name="product_price_placeholder">Amazing price in\ </string>
+    <string name="product_seller_placeholder">Some seller</string>
+    <string name="category_placeholder">Selected category</string>
+    <string name="seller_headline">Welcome to the seller page</string>
 
 
     <string name="category_type">Select a category</string>
