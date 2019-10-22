@@ -75,29 +75,15 @@
             android:textSize="8pt" />
 
         <Button
-            android:id="@+id/delete_product_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Delete"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorWhite"
-            android:onClick="onClickDeleteProduct"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <Button
             android:id="@+id/reviews_btn"
+            android:text="@string/reviews_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="82dp"
-            android:background="@color/colorPrimary"
+            android:layout_below="@id/currency_sign_placeholder"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
             android:onClick="onClickReviews"
-            android:text="Reviews"
+            android:background="@color/colorPrimary"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

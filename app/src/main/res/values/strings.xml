@@ -18,6 +18,7 @@
     <string name="publish_product">Publish</string>
     <string name="update_product">Update</string>
     <string name="delete_product">Delete</string>
+    <string name="reviews_product">Reviews</string>
 
     <string name="product_name_placeholder">Product\'s name here</string>
     <string name="product_description_placeholder">Long or short description all around here</string>

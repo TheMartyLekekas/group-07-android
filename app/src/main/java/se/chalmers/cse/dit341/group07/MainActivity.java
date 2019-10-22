@@ -11,7 +11,6 @@ import android.util.Log;
 import java.io.Serializable;
 import java.util.ArrayList;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.AdapterView;
