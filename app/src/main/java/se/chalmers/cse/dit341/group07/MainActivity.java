@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     @Override
     protected void onResume() {
         super.onResume();
+        products.removeAll(products);
         MyRequestQueue = Volley.newRequestQueue(this);
 
         MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -153,16 +154,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         startActivityForResult(intent, request_code);
     }
 
-    public void onClickUpdateProduct (View view) {
-        TextView productView = findViewById(R.id.update_product_btn);
 
-        // Starts a new activity, providing the text from my HTTP text field as an input
-        Intent intent = new Intent(this, UpdateProduct.class);
-        intent.putExtra(HTTP_PARAM, productView.getText().toString());
-
-        final int request_code = 2;
-        startActivityForResult(intent, request_code);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent newProduct) {

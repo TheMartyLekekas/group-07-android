@@ -32,17 +32,21 @@ public class ProductScreen extends AppCompatActivity {
     String url = "https://webshop-gu-backend.herokuapp.com/api/products";
     RequestQueue MyRequestQueue;
     JsonObjectRequest MyJsonRequest;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        final ImageView icon = findViewById(R.id.list_item_icon);
         final TextView Tname = findViewById(R.id.name_placeholder);
         final TextView Tdescription = findViewById(R.id.description_placeholder);
         final TextView Tprice = findViewById(R.id.price_placeholder);
-        savedInstanceState=getIntent().getExtras();
-        String id=savedInstanceState.getString("ID");
+        savedInstanceState = getIntent().getExtras();
+        id = savedInstanceState.getString("ID");
+
+        System.out.println("*******------*********");
+        System.out.println(id);
+        System.out.println("*************------****************");
 
         MyRequestQueue=Volley.newRequestQueue(this);
         MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url+"/"+id , null, new Response.Listener<JSONObject>() {
@@ -77,6 +81,7 @@ public class ProductScreen extends AppCompatActivity {
         // Starts a new activity, providing the text from my HTTP text field as an input
         Intent intent = new Intent(this, UpdateProduct.class);
         intent.putExtra(HTTP_PARAM, productView.getText().toString());
+        intent.putExtra("id", id);
 
         final int request_code = 1;
         startActivityForResult(intent, request_code);
