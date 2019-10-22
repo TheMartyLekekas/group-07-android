@@ -33,7 +33,7 @@ public class UpdateProduct extends AppCompatActivity {
 
     private void renewProduct(String product) {
         Log.i("WATCH HERE", "HERE!");
-        Log.i("PRODUKT", product);
+        Log.i("PRODUCT", product);
     }
 
     @Override

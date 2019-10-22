@@ -72,11 +72,6 @@ private OnItemClickListener mListener;
         TextView dateTextView = listItemView.findViewById(R.id.review_date);
         dateTextView.setText(String.valueOf(currentReview.getDate()));
 
-//        TextView imageTextView = listItemView.findViewById(R.id.product_image_id);
-//        imageTextView.setText(String.valueOf(currentProduct.getImageResourceId()));
-
-
-
         return listItemView;
     }
 }

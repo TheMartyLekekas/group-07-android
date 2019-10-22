@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray productsArray = response.getJSONArray("products");
-                    Log.d("ARARY", productsArray.toString());
+                    Log.d("ARRAY", productsArray.toString());
 
                     for(int i = 0; i < productsArray.length(); i++) {
                         JSONObject product = productsArray.getJSONObject(i);
@@ -163,13 +163,16 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 products.add(neProduct);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
-                //code if there's no result
+                Log.d("EMPTY", "result");
             }
 
         } else if(requestCode == 2) {
             if(resultCode == Activity.RESULT_OK){
                 Product updatedProduct = (Product) newProduct.getSerializableExtra("passedProduct");
                 products.add(updatedProduct);
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                Log.d("EMPTY", "result");
             }
         }
     }

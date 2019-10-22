@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.view.View;
 
@@ -95,11 +96,10 @@ public class ProductScreen extends AppCompatActivity {
 
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
-                Product neProduct = (Product) newProduct.getSerializableExtra("updatedProduct");
-//                products.add(neProduct);
+                finish();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
-                //code if there's no result
+                Log.d("EMPTY", "result");
             }
         }
     }
