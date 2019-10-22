@@ -2,6 +2,7 @@ package se.chalmers.cse.dit341.group07.model;
 
 import com.google.gson.annotations.SerializedName;
 
+
 import java.io.Serializable;
 
 public class Product implements Serializable {

@@ -1,4 +1,4 @@
-package se.chalmers.cse.dit341.group07.model;
+package se.chalmers.cse.dit341.group07;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

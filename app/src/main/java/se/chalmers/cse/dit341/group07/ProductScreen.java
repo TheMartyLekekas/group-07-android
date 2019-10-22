@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,14 +15,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import se.chalmers.cse.dit341.group07.model.DeleteProduct;
 import se.chalmers.cse.dit341.group07.model.Product;
-
-import static java.lang.Math.pow;
-import static se.chalmers.cse.dit341.group07.MainActivity.HTTP_PARAM;
 
 public class ProductScreen extends AppCompatActivity {
     public static final String HTTP_PARAM = "httpResponse";
@@ -92,6 +84,13 @@ public class ProductScreen extends AppCompatActivity {
 
     public void onClickReviews (View view) {
         Intent intent = new Intent(this, ReviewsScreen.class);
+        intent.putExtra("ID", this.id);
+
+        startActivity(intent);
+    }
+
+    public void onClickSeller(View view) {
+        Intent intent = new Intent(this, SellerScreen.class);
         intent.putExtra("ID", this.id);
 
         startActivity(intent);
