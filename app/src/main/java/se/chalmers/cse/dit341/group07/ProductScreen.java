@@ -103,7 +103,22 @@ public class ProductScreen extends AppCompatActivity {
     }
 
     public void onClickDeleteProduct (View view) {
-        Intent intent = new Intent(this, DeleteProduct.class);
+        MyRequestQueue = Volley.newRequestQueue(this);
+
+        MyJsonRequest = new JsonObjectRequest(Request.Method.DELETE, url + "/" + this.id, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        MyRequestQueue.add(MyJsonRequest);
+        finish();
 
 
     }
