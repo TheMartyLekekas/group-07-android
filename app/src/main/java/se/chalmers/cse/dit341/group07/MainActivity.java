@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         Product p = new Product (id, name, description, price, category, "");
 
                         products.add(p);
-                        Log.d("ARRAY", p.getName());
                     }
 
                 }

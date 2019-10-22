@@ -41,12 +41,9 @@ public class ProductScreen extends AppCompatActivity {
         final TextView Tname = findViewById(R.id.name_placeholder);
         final TextView Tdescription = findViewById(R.id.description_placeholder);
         final TextView Tprice = findViewById(R.id.price_placeholder);
-        savedInstanceState = getIntent().getExtras();
-        id = savedInstanceState.getString("ID");
-
-        System.out.println("*******------*********");
-        System.out.println(id);
-        System.out.println("*************------****************");
+        savedInstanceState=getIntent().getExtras();
+        String id=savedInstanceState.getString("ID");
+        this.id = id;
 
         MyRequestQueue=Volley.newRequestQueue(this);
         MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url+"/"+id , null, new Response.Listener<JSONObject>() {
@@ -91,6 +88,13 @@ public class ProductScreen extends AppCompatActivity {
         Intent intent = new Intent(this, DeleteProduct.class);
 
 
+    }
+
+    public void onClickReviews (View view) {
+        Intent intent = new Intent(this, ReviewsScreen.class);
+        intent.putExtra("ID", this.id);
+
+        startActivity(intent);
     }
 
     @Override
