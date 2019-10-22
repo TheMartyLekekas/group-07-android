@@ -1,51 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/review_text"
-            android:layout_width="190dp"
+            android:layout_width="106dp"
             android:layout_height="83dp"
             android:layout_weight="1"
             android:editable="true"
             android:text="Text"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/review_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="83dp"
-            android:layout_weight="1"
-            android:editable="true"
-            android:text="Rating"
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/review_rating"
+        android:layout_width="2dp"
+        android:layout_height="74dp"
+        android:layout_weight="1"
+        android:editable="true"
+        android:text="Rating"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/review_date"
-            android:layout_width="wrap_content"
-            android:layout_height="83dp"
-            android:layout_weight="1"
-            android:editable="true"
-            android:text="Date"
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/review_date"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_weight="1"
+        android:editable="true"
+        android:text="Date"
+        android:textSize="18sp" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>

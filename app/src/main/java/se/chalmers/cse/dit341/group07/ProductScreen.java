@@ -32,6 +32,7 @@ public class ProductScreen extends AppCompatActivity {
     String url = "https://webshop-gu-backend.herokuapp.com/api/products";
     RequestQueue MyRequestQueue;
     JsonObjectRequest MyJsonRequest;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class ProductScreen extends AppCompatActivity {
         final TextView Tprice = findViewById(R.id.price_placeholder);
         savedInstanceState=getIntent().getExtras();
         String id=savedInstanceState.getString("ID");
+        this.id = id;
 
         MyRequestQueue=Volley.newRequestQueue(this);
         MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url+"/"+id , null, new Response.Listener<JSONObject>() {
@@ -86,6 +88,13 @@ public class ProductScreen extends AppCompatActivity {
         Intent intent = new Intent(this, DeleteProduct.class);
 
 
+    }
+
+    public void onClickReviews (View view) {
+        Intent intent = new Intent(this, ReviewsScreen.class);
+        intent.putExtra("ID", this.id);
+
+        startActivity(intent);
     }
 
     @Override
