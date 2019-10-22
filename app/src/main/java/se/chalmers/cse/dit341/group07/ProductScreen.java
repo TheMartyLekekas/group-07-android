@@ -27,6 +27,11 @@ public class ProductScreen extends AppCompatActivity {
     RequestQueue MyRequestQueue;
     JsonObjectRequest MyJsonRequest;
     String id;
+    String nameForUpdate;
+    String descriptionForUpdate;
+    String priceForUpdate;
+    String categoryForUpdate;
+    String sellerForUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +40,28 @@ public class ProductScreen extends AppCompatActivity {
         final TextView Tname = findViewById(R.id.name_placeholder);
         final TextView Tdescription = findViewById(R.id.description_placeholder);
         final TextView Tprice = findViewById(R.id.price_placeholder);
-        savedInstanceState=getIntent().getExtras();
-        String id=savedInstanceState.getString("ID");
+        savedInstanceState = getIntent().getExtras();
+        String id = savedInstanceState.getString("ID");
         this.id = id;
 
-        MyRequestQueue=Volley.newRequestQueue(this);
+        MyRequestQueue = Volley.newRequestQueue(this);
         MyJsonRequest = new JsonObjectRequest(Request.Method.GET, url+"/"+id , null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONObject product = response.getJSONObject("product");
 
-                    String name= product.getString("name");
+                    String name = product.getString("name");
                     Tname.setText(name);
-                    String description= product.getString("description");
+                    nameForUpdate = name;
+
+                    String description = product.getString("description");
                     Tdescription.setText(description);
-                    String price= product.getString("price");
+                    descriptionForUpdate = description;
+
+                    String price = product.getString("price");
                     Tprice.setText(price);
+                    priceForUpdate = price;
                 }
                 catch(Exception e) {
 
@@ -73,6 +83,9 @@ public class ProductScreen extends AppCompatActivity {
         Intent intent = new Intent(this, UpdateProduct.class);
         intent.putExtra(HTTP_PARAM, productView.getText().toString());
         intent.putExtra("id", id);
+        intent.putExtra("name", nameForUpdate);
+        intent.putExtra("description", descriptionForUpdate);
+        intent.putExtra("price", priceForUpdate);
 
         final int request_code = 1;
         startActivityForResult(intent, request_code);
