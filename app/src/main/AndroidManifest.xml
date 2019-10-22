@@ -61,6 +61,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.chalmers.cse.dit341.group07.MainActivity" />
         </activity>
+        <activity android:name="se.chalmers.cse.dit341.group07.SellerScreen"
+            android:label="Seller"
+            android:configChanges="orientation|keyboardHidden"
+            android:parentActivityName="se.chalmers.cse.dit341.group07.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="se.chalmers.cse.dit341.group07.MainActivity" />
+        </activity>
 
     </application>
 

@@ -17,9 +17,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-import se.chalmers.cse.dit341.group07.model.DeleteProduct;
 import se.chalmers.cse.dit341.group07.model.Product;
-
 
 public class ProductScreen extends AppCompatActivity {
     public static final String HTTP_PARAM = "httpResponse";
@@ -99,6 +97,13 @@ public class ProductScreen extends AppCompatActivity {
 
     public void onClickReviews (View view) {
         Intent intent = new Intent(this, ReviewsScreen.class);
+        intent.putExtra("ID", this.id);
+
+        startActivity(intent);
+    }
+
+    public void onClickSeller(View view) {
+        Intent intent = new Intent(this, SellerScreen.class);
         intent.putExtra("ID", this.id);
 
         startActivity(intent);

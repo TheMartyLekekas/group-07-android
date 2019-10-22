@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     public static final String name="name";
     // Field for parameter name
     public static final String HTTP_PARAM = "httpResponse";
-    public static final ArrayList<Product> products = new ArrayList<>();
+    public static ArrayList<Product> products = new ArrayList<>();
     String url = "https://webshop-gu-backend.herokuapp.com/api/products";
     RequestQueue MyRequestQueue;
     JsonObjectRequest MyJsonRequest;
@@ -152,6 +152,25 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         startActivityForResult(intent, request_code);
     }
 
+    public void onClickDeleteAll (View view) {
+        products.removeAll(products);
+        MyRequestQueue = Volley.newRequestQueue(this);
+
+        MyJsonRequest = new JsonObjectRequest(Request.Method.DELETE, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                setupAdapter(products);
+            }
+        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        MyRequestQueue.add(MyJsonRequest);
+
+    }
 
 
     @Override
